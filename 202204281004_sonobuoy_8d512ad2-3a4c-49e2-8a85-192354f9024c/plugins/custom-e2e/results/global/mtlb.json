@@ -1,0 +1,165 @@
+name: mtb-benchmark
+status: complete
+items:
+- name: Block access to cluster resources
+  status: Pass
+  details:
+    category: Control Plane Isolation
+    description: Tenants should not be able to view, edit, create, or delete cluster
+      (non-namespaced) resources such Node, ClusterRole, ClusterRoleBinding, etc.
+    remediation: ""
+- name: Block Multitenant Resources
+  status: Error
+  details:
+    category: Tenant Isolation
+    description: Each tenant namespace may contain resources setup by the cluster
+      administrator for multi-tenancy, such as role bindings, and network policies.
+      Tenants should not be allowed to modify the namespaced resources created by
+      the cluster administrator for multi-tenancy. However, for some resources such
+      as network policies, tenants can configure additional instances of the resource
+      for their workloads.
+    remediation: ""
+- name: Block add capabilities
+  status: Error
+  details:
+    category: Control Plane Isolation
+    description: Linux
+    remediation: Define a `PodSecurityPolicy` with `allowedCapabilities` and map the
+      policy to each tenant namespace, or use a policy engine such as [OPA/Gatekeeper](https://github.com/open-policy-agent/gatekeeper)
+      or [Kyverno](https://kyverno.io) to enforce new capabilities cannot be added.
+      You can use the policies present [here](https://github.com/kubernetes-sigs/multi-tenancy/tree/master/benchmarks/kubectl-mtb/test/policies).
+- name: Require run as non-root user
+  status: Error
+  details:
+    category: Control Plane Isolation
+    description: Linux
+    remediation: Define a PodSecurityPolicy a runAsUser rule set to MustRunAsNonRoot
+      and map the policy to each tenant's namespace, or use a policy engine such as
+      OPA/Gatekeeper or Kyverno to enforce that runAsNonRoot is set to true for tenant
+      pods. You can use the policies present [here](https://github.com/kubernetes-sigs/multi-tenancy/tree/master/benchmarks/kubectl-mtb/test/policies).
+- name: Block privileged containers
+  status: Error
+  details:
+    category: Control Plane Isolation
+    description: Linux
+    remediation: Define a `PodSecurityPolicy` with `privileged` set to `false` and
+      map the policy to each tenant's namespace, or use a policy engine such as [OPA/Gatekeeper](https://github.com/open-policy-agent/gatekeeper)
+      or [Kyverno](https://kyverno.io) to prevent tenants from running privileged
+      containers. You can use the policies present [here](https://github.com/kubernetes-sigs/multi-tenancy/tree/master/benchmarks/kubectl-mtb/test/policies).
+- name: Block privilege escalation
+  status: Error
+  details:
+    category: Control Plane Isolation
+    description: The `securityContext.allowPrivilegeEscalation` setting allows a process
+      to gain more privileges from its parent process. Processes in tenant containers
+      should not be allowed to gain additional priviliges.
+    remediation: Define a `PodSecurityPolicy` with `allowPrivilegeEscalation` set
+      to `false` and map the policy to each tenant's namespace,  or use a policy engine
+      such as [OPA/Gatekeeper](https://github.com/open-policy-agent/gatekeeper) or
+      [Kyverno](https://kyverno.io) to prevent privilege escalation. You can use the
+      policies present [here](https://github.com/kubernetes-sigs/multi-tenancy/tree/master/benchmarks/kubectl-mtb/test/policies).
+- name: Require always imagePullPolicy
+  status: Error
+  details:
+    category: Data Isolation
+    description: Require that the image pull policy is always set to to `Always` so
+      that the users an be assured that their private images can only be used by those
+      who have the credentials to pull them.
+    remediation: Enable the AlwaysPullImages admission plugin in the kube-apiserver
+      or create a dynamic admission controller that enforces/mutates the `imagePullPolicy`
+      to be `Always` for all Pods in the cluster.
+- name: Configure namespace resource quotas
+  status: Error
+  details:
+    category: Fairness
+    description: Namespace resource quotas should be used to allocate, track, and
+      limit a tenant's use of shared resources.
+    remediation: Create ResourceQuota object, you can use the configuration file present
+      in `quotas` directory, example `kubectl apply -f test/quotas/ns_quota.yaml`
+- name: Configure namespace object limits
+  status: Error
+  details:
+    category: Fairness
+    description: Namespace resource quotas should be used to allocate, track and limit
+      the number of objects, of a particular type, that can be created within a namespace.
+    remediation: Create ResourceQuota object, you can use the configuration file present
+      in `quotas` directory, example `kubectl apply -f test/quotas/ns_quota.yaml`
+- name: Block use of host path volumes
+  status: Error
+  details:
+    category: Host Protection
+    description: Tenants should not be able to mount host volumes and directories
+    remediation: Define a `PodSecurityPolicy` that restricts hostPath volumes and
+      map the policy to each tenant namespace, or use a policy engine such as [OPA/Gatekeeper](https://github.com/open-policy-agent/gatekeeper)
+      or [Kyverno](https://kyverno.io) to enforce that a `hostPath` volume cannot
+      be used. You can use the policies present [here](https://github.com/kubernetes-sigs/multi-tenancy/tree/master/benchmarks/kubectl-mtb/test/policies).
+- name: Block use of NodePort services
+  status: Error
+  details:
+    category: Host Isolation
+    description: Tenants should not be able to create services of type NodePort.
+    remediation: Use a policy engine such as [OPA/Gatekeeper](https://github.com/open-policy-agent/gatekeeper)
+      or [Kyverno](https://kyverno.io) to block NodePort Services. You can use the
+      policies present [here](https://github.com/kubernetes-sigs/multi-tenancy/tree/master/benchmarks/kubectl-mtb/test/policies).
+- name: Block use of host networking and ports
+  status: Error
+  details:
+    category: Host Isolation
+    description: Tenants should not be allowed to use host networking and host ports
+      for their workloads.
+    remediation: ""
+- name: Block use of host PID
+  status: Error
+  details:
+    category: Host Isolation
+    description: Tenants should not be allowed to share the host process ID (PID)
+      namespace.
+    remediation: Define a `PodSecurityPolicy` with `hostPID` set to `false` and map
+      the policy to each tenant's namespace, or use a policy engine such as [OPA/Gatekeeper](https://github.com/open-policy-agent/gatekeeper)
+      or [Kyverno](https://kyverno.io) to enforce that `hostPID` cannot be set to
+      `true`. You can use the policies present [here](https://github.com/kubernetes-sigs/multi-tenancy/tree/master/benchmarks/kubectl-mtb/test/policies).
+- name: Block use of host IPC
+  status: Error
+  details:
+    category: Host Isolation
+    description: Tenants should not be allowed to share the host's inter-process communication
+      (IPC) namespace.
+    remediation: Define a `PodSecurityPolicy` with `hostIPC` set to `false` and map
+      the policy to each tenant's namespace, or use a policy engine such as [OPA/Gatekeeper](https://github.com/open-policy-agent/gatekeeper)
+      or [Kyverno](https://kyverno.io) to enforce that `hostPID` cannot be set to
+      `true`. You can use the policies present [here](https://github.com/kubernetes-sigs/multi-tenancy/tree/master/benchmarks/kubectl-mtb/test/policies).
+- name: Block modification of resource quotas
+  status: Pass
+  details:
+    category: Tenant Isolation
+    description: Tenants should not be able to modify the resource quotas defined
+      in their namespaces
+    remediation: ""
+- name: Create Role Bindings
+  status: Fail
+  details:
+    category: Self-Service Operations
+    description: Tenants should be able to create roles and role-bindings in their
+      namespaces.
+    remediation: ""
+- name: Create Network Policies
+  status: Fail
+  details:
+    category: Self-Service Operations
+    description: Tenants should be able to perform self-service operations by creating
+      own network policies in their namespaces.
+    remediation: ""
+- name: Block role privilege escalation
+  status: Pass
+  details:
+    category: Tenant Isolation
+    description: |
+      Tenants should not have the ability to escalate their Role beyond the permissions the administrator gives them.
+    remediation: |
+      Ensure that users can't perform the "escalate" verb on Roles. Ensure users can't perform the "bind" verb on arbitrary Roles/ClusterRoles. Ref: https://kubernetes.io/docs/reference/access-authn-authz/rbac/#privilege-escalation-prevention-and-bootstrapping
+- name: Block access to other tenant resources
+  details:
+    category: Tenant Isolation
+    description: Access controls should be configured so that a tenant cannot view,
+      edit, create, or delete namespaced resources belonging to another tenant.
+    remediation: ""

@@ -1,0 +1,9 @@
+name: custom-e2e
+status: passed
+meta:
+  type: summary
+items:
+- name: mtlb.json
+  status: passed
+  meta:
+    file: results/global/mtlb.json

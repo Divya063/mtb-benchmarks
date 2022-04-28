@@ -1,19 +1,20 @@
 sonobuoy-config:
   driver: Job
   plugin-name: custom-e2e
-  result-format: gojson
+  result-format: manual
   source_url: https://raw.githubusercontent.com/vmware-tanzu/sonobuoy-plugins/main/examples/e2e-skeleton/plugin.yaml
   description: An easy to start from project for making K8s aware tests.
 spec:
   command:
   - bash
-  args: ["-c","go tool test2json ./custom.test -test.v | tee ${SONOBUOY_RESULTS_DIR}/out.json ; echo ${SONOBUOY_RESULTS_DIR}/out.json > ${SONOBUOY_RESULTS_DIR}/done"]
-  image: schnake/custome2e:v0.2.1
-  env:
-  - name: NS_PREFIX
-    value: custom
-  - name: SONOBUOY_PROGRESS_PORT
-    value: "8099"
+  args:
+  - -c
+  - /kube/kubectl-mtb_linux_amd64 run benchmarks -n "test" --as "system:serviceaccount:default:divya";
+    mkdir -p /tmp/sonobuoy/results;
+    cp /tmp/mtlb.json /tmp/sonobuoy/results/;
+    tar czvf /tmp/sonobuoy/results/results.tar.gz -C /tmp/sonobuoy/results/ .;
+    echo -n /tmp/sonobuoy/results/results.tar.gz > /tmp/sonobuoy/results/done
+  image: mtb
   name: plugin
   resources: {}
   volumeMounts:

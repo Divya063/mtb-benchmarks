@@ -1,0 +1,47 @@
+{"level":"info","msg":"Starting server Expected Results: [{global custom-e2e}]","time":"2022-04-28T10:04:29Z"}
+{"level":"info","msg":"Starting annotation update routine","time":"2022-04-28T10:04:29Z"}
+{"address":"0.0.0.0","level":"info","msg":"Starting aggregation server","port":8080,"time":"2022-04-28T10:04:29Z"}
+{"level":"info","msg":"Running plugin","plugin":"custom-e2e","time":"2022-04-28T10:04:29Z"}
+{"client_cert":["custom-e2e"],"level":"info","method":"PUT","msg":"received request","plugin_name":"custom-e2e","time":"2022-04-28T10:04:49Z","url":{"Scheme":"","Opaque":"","User":null,"Host":"","Path":"/api/v1/results/global/custom-e2e","RawPath":"","ForceQuery":false,"RawQuery":"","Fragment":"","RawFragment":""}}
+{"level":"info","msg":"Last update to annotations on exit","time":"2022-04-28T10:04:49Z"}
+{"level":"info","msg":"Shutting down aggregation server","time":"2022-04-28T10:04:49Z"}
+{"level":"info","msg":"Log lines after this point will not appear in the downloaded tarball.","time":"2022-04-28T10:04:49Z"}
+{"level":"info","msg":"Resources is not set explicitly implying query all resources, but skipping secrets for safety. Specify the value explicitly in Resources to gather this data.","time":"2022-04-28T10:04:50Z"}
+{"level":"info","msg":"Collecting Node Configuration and Health...","time":"2022-04-28T10:04:50Z"}
+{"level":"info","msg":"Creating host results for test-kyverno-control-plane under /tmp/sonobuoy/8d512ad2-3a4c-49e2-8a85-192354f9024c/hosts/test-kyverno-control-plane\n","time":"2022-04-28T10:04:50Z"}
+{"level":"info","msg":"Running cluster queries","time":"2022-04-28T10:04:50Z"}
+{"level":"info","msg":"Querying server version and API Groups","time":"2022-04-28T10:04:51Z"}
+{"level":"info","msg":"Filtering namespaces based on the following regex:.*","time":"2022-04-28T10:04:51Z"}
+{"level":"info","msg":"Namespace default Matched=true","time":"2022-04-28T10:04:51Z"}
+{"level":"info","msg":"Namespace kube-node-lease Matched=true","time":"2022-04-28T10:04:51Z"}
+{"level":"info","msg":"Namespace kube-public Matched=true","time":"2022-04-28T10:04:51Z"}
+{"level":"info","msg":"Namespace kube-system Matched=true","time":"2022-04-28T10:04:51Z"}
+{"level":"info","msg":"Namespace kyverno Matched=true","time":"2022-04-28T10:04:51Z"}
+{"level":"info","msg":"Namespace local-path-storage Matched=true","time":"2022-04-28T10:04:51Z"}
+{"level":"info","msg":"Namespace sonobuoy Matched=true","time":"2022-04-28T10:04:51Z"}
+{"level":"info","msg":"Namespace test Matched=true","time":"2022-04-28T10:04:51Z"}
+{"level":"info","msg":"Namespace tesyt Matched=true","time":"2022-04-28T10:04:51Z"}
+{"level":"info","msg":"Running ns query (default)","time":"2022-04-28T10:04:51Z"}
+{"level":"info","msg":"Running ns query (kube-node-lease)","time":"2022-04-28T10:04:51Z"}
+{"level":"info","msg":"Running ns query (kube-public)","time":"2022-04-28T10:04:52Z"}
+{"level":"info","msg":"Running ns query (kube-system)","time":"2022-04-28T10:04:53Z"}
+{"level":"info","msg":"Running ns query (kyverno)","time":"2022-04-28T10:04:54Z"}
+{"level":"info","msg":"Running ns query (local-path-storage)","time":"2022-04-28T10:04:55Z"}
+{"level":"info","msg":"Running ns query (sonobuoy)","time":"2022-04-28T10:04:56Z"}
+{"level":"info","msg":"Running ns query (test)","time":"2022-04-28T10:04:57Z"}
+{"level":"info","msg":"Running ns query (tesyt)","time":"2022-04-28T10:04:58Z"}
+{"level":"info","msg":"Namespace default Matched=false","time":"2022-04-28T10:04:59Z"}
+{"level":"info","msg":"Namespace kube-node-lease Matched=false","time":"2022-04-28T10:04:59Z"}
+{"level":"info","msg":"Namespace kube-public Matched=false","time":"2022-04-28T10:04:59Z"}
+{"level":"info","msg":"Namespace kube-system Matched=true","time":"2022-04-28T10:04:59Z"}
+{"level":"info","msg":"Namespace kyverno Matched=false","time":"2022-04-28T10:04:59Z"}
+{"level":"info","msg":"Namespace local-path-storage Matched=false","time":"2022-04-28T10:04:59Z"}
+{"level":"info","msg":"Namespace sonobuoy Matched=true","time":"2022-04-28T10:04:59Z"}
+{"level":"info","msg":"Namespace test Matched=false","time":"2022-04-28T10:04:59Z"}
+{"level":"info","msg":"Namespace tesyt Matched=false","time":"2022-04-28T10:04:59Z"}
+{"level":"info","msg":"querying pod logs under namespace kube-system","time":"2022-04-28T10:04:59Z"}
+{"level":"info","msg":"Collecting Pod Logs by namespace (kube-system)","time":"2022-04-28T10:04:59Z"}
+{"level":"info","msg":"querying pod logs under namespace sonobuoy","time":"2022-04-28T10:04:59Z"}
+{"level":"info","msg":"Collecting Pod Logs by namespace (sonobuoy)","time":"2022-04-28T10:04:59Z"}
+{"level":"info","msg":"Collecting Pod Logs by FieldSelectors: []","time":"2022-04-28T10:04:59Z"}
+{"level":"info","msg":"recording query times at /tmp/sonobuoy/8d512ad2-3a4c-49e2-8a85-192354f9024c/meta/query-time.json","time":"2022-04-28T10:04:59Z"}

@@ -1,0 +1,270 @@
+Flag --port has been deprecated, see --secure-port instead.
+I0428 08:55:07.942045       1 serving.go:347] Generated self-signed cert in-memory
+I0428 08:55:08.587054       1 controllermanager.go:175] Version: v1.21.1
+I0428 08:55:08.588403       1 dynamic_cafile_content.go:167] Starting request-header::/etc/kubernetes/pki/front-proxy-ca.crt
+I0428 08:55:08.588499       1 dynamic_cafile_content.go:167] Starting client-ca-bundle::/etc/kubernetes/pki/ca.crt
+I0428 08:55:08.589558       1 secure_serving.go:197] Serving securely on 127.0.0.1:10257
+I0428 08:55:08.589664       1 tlsconfig.go:240] Starting DynamicServingCertificateController
+I0428 08:55:08.590268       1 leaderelection.go:243] attempting to acquire leader lease kube-system/kube-controller-manager...
+I0428 08:55:26.277529       1 leaderelection.go:253] successfully acquired lease kube-system/kube-controller-manager
+I0428 08:55:26.278064       1 event.go:291] "Event occurred" object="kube-system/kube-controller-manager" kind="Lease" apiVersion="coordination.k8s.io/v1" type="Normal" reason="LeaderElection" message="test-kyverno-control-plane_cb3c67ef-055e-4d49-8274-bfa243821ed9 became leader"
+I0428 08:55:27.041401       1 shared_informer.go:240] Waiting for caches to sync for tokens
+I0428 08:55:27.046555       1 controllermanager.go:574] Started "endpointslice"
+I0428 08:55:27.046765       1 endpointslice_controller.go:256] Starting endpoint slice controller
+I0428 08:55:27.046825       1 shared_informer.go:240] Waiting for caches to sync for endpoint_slice
+I0428 08:55:27.056451       1 garbagecollector.go:142] Starting garbage collector controller
+I0428 08:55:27.056482       1 shared_informer.go:240] Waiting for caches to sync for garbage collector
+I0428 08:55:27.056498       1 graph_builder.go:289] GraphBuilder running
+I0428 08:55:27.056586       1 controllermanager.go:574] Started "garbagecollector"
+I0428 08:55:27.058998       1 controllermanager.go:574] Started "deployment"
+I0428 08:55:27.059024       1 deployment_controller.go:153] "Starting controller" controller="deployment"
+I0428 08:55:27.059032       1 shared_informer.go:240] Waiting for caches to sync for deployment
+I0428 08:55:27.061452       1 controllermanager.go:574] Started "cronjob"
+I0428 08:55:27.061541       1 cronjob_controllerv2.go:125] Starting cronjob controller v2
+I0428 08:55:27.061566       1 shared_informer.go:240] Waiting for caches to sync for cronjob
+I0428 08:55:27.064439       1 certificate_controller.go:118] Starting certificate controller "csrsigning-kubelet-serving"
+I0428 08:55:27.064475       1 shared_informer.go:240] Waiting for caches to sync for certificate-csrsigning-kubelet-serving
+I0428 08:55:27.064500       1 dynamic_serving_content.go:130] Starting csr-controller::/etc/kubernetes/pki/ca.crt::/etc/kubernetes/pki/ca.key
+I0428 08:55:27.064765       1 certificate_controller.go:118] Starting certificate controller "csrsigning-kubelet-client"
+I0428 08:55:27.064792       1 shared_informer.go:240] Waiting for caches to sync for certificate-csrsigning-kubelet-client
+I0428 08:55:27.064811       1 dynamic_serving_content.go:130] Starting csr-controller::/etc/kubernetes/pki/ca.crt::/etc/kubernetes/pki/ca.key
+I0428 08:55:27.064968       1 certificate_controller.go:118] Starting certificate controller "csrsigning-kube-apiserver-client"
+I0428 08:55:27.065014       1 shared_informer.go:240] Waiting for caches to sync for certificate-csrsigning-kube-apiserver-client
+I0428 08:55:27.065035       1 dynamic_serving_content.go:130] Starting csr-controller::/etc/kubernetes/pki/ca.crt::/etc/kubernetes/pki/ca.key
+I0428 08:55:27.065411       1 controllermanager.go:574] Started "csrsigning"
+I0428 08:55:27.065441       1 certificate_controller.go:118] Starting certificate controller "csrsigning-legacy-unknown"
+I0428 08:55:27.065749       1 shared_informer.go:240] Waiting for caches to sync for certificate-csrsigning-legacy-unknown
+I0428 08:55:27.065459       1 dynamic_serving_content.go:130] Starting csr-controller::/etc/kubernetes/pki/ca.crt::/etc/kubernetes/pki/ca.key
+I0428 08:55:27.067317       1 controllermanager.go:574] Started "ttl"
+W0428 08:55:27.067383       1 core.go:245] configure-cloud-routes is set, but no cloud provider specified. Will not configure cloud provider routes.
+W0428 08:55:27.067389       1 controllermanager.go:566] Skipping "route"
+I0428 08:55:27.067423       1 ttl_controller.go:121] Starting TTL controller
+I0428 08:55:27.067463       1 shared_informer.go:240] Waiting for caches to sync for TTL
+I0428 08:55:27.069474       1 controllermanager.go:574] Started "root-ca-cert-publisher"
+I0428 08:55:27.069491       1 publisher.go:102] Starting root CA certificate configmap publisher
+I0428 08:55:27.069504       1 shared_informer.go:240] Waiting for caches to sync for crt configmap
+I0428 08:55:27.073844       1 controllermanager.go:574] Started "ephemeral-volume"
+I0428 08:55:27.073960       1 controller.go:170] Starting ephemeral volume controller
+I0428 08:55:27.073967       1 shared_informer.go:240] Waiting for caches to sync for ephemeral
+I0428 08:55:27.075782       1 controllermanager.go:574] Started "endpoint"
+I0428 08:55:27.076025       1 endpoints_controller.go:189] Starting endpoint controller
+I0428 08:55:27.076134       1 shared_informer.go:240] Waiting for caches to sync for endpoint
+I0428 08:55:27.077653       1 controllermanager.go:574] Started "serviceaccount"
+I0428 08:55:27.077860       1 serviceaccounts_controller.go:117] Starting service account controller
+I0428 08:55:27.077977       1 shared_informer.go:240] Waiting for caches to sync for service account
+I0428 08:55:27.079532       1 node_ipam_controller.go:91] Sending events to api server.
+I0428 08:55:27.142526       1 shared_informer.go:247] Caches are synced for tokens 
+I0428 08:55:37.098197       1 range_allocator.go:82] Sending events to api server.
+I0428 08:55:37.098335       1 range_allocator.go:116] No Secondary Service CIDR provided. Skipping filtering out secondary service addresses.
+I0428 08:55:37.098512       1 controllermanager.go:574] Started "nodeipam"
+I0428 08:55:37.098580       1 node_ipam_controller.go:154] Starting ipam controller
+I0428 08:55:37.098610       1 shared_informer.go:240] Waiting for caches to sync for node
+I0428 08:55:37.100291       1 node_lifecycle_controller.go:76] Sending events to api server
+E0428 08:55:37.100374       1 core.go:231] failed to start cloud node lifecycle controller: no cloud provider provided
+W0428 08:55:37.100417       1 controllermanager.go:566] Skipping "cloud-node-lifecycle"
+I0428 08:55:37.102261       1 controllermanager.go:574] Started "ttl-after-finished"
+I0428 08:55:37.102290       1 ttlafterfinished_controller.go:109] Starting TTL after finished controller
+I0428 08:55:37.102298       1 shared_informer.go:240] Waiting for caches to sync for TTL after finished
+I0428 08:55:37.103852       1 controllermanager.go:574] Started "endpointslicemirroring"
+I0428 08:55:37.103981       1 endpointslicemirroring_controller.go:211] Starting EndpointSliceMirroring controller
+I0428 08:55:37.104003       1 shared_informer.go:240] Waiting for caches to sync for endpoint_slice_mirroring
+I0428 08:55:37.105565       1 controllermanager.go:574] Started "csrapproving"
+I0428 08:55:37.105587       1 certificate_controller.go:118] Starting certificate controller "csrapproving"
+I0428 08:55:37.105599       1 shared_informer.go:240] Waiting for caches to sync for certificate-csrapproving
+I0428 08:55:37.107658       1 controllermanager.go:574] Started "clusterrole-aggregation"
+I0428 08:55:37.107716       1 clusterroleaggregation_controller.go:194] Starting ClusterRoleAggregator
+I0428 08:55:37.107725       1 shared_informer.go:240] Waiting for caches to sync for ClusterRoleAggregator
+I0428 08:55:37.109557       1 controllermanager.go:574] Started "pvc-protection"
+I0428 08:55:37.109704       1 pvc_protection_controller.go:110] "Starting PVC protection controller"
+I0428 08:55:37.109732       1 shared_informer.go:240] Waiting for caches to sync for PVC protection
+I0428 08:55:37.113885       1 controllermanager.go:574] Started "disruption"
+I0428 08:55:37.114038       1 disruption.go:363] Starting disruption controller
+I0428 08:55:37.114082       1 shared_informer.go:240] Waiting for caches to sync for disruption
+I0428 08:55:37.116003       1 controllermanager.go:574] Started "bootstrapsigner"
+I0428 08:55:37.116139       1 shared_informer.go:240] Waiting for caches to sync for bootstrap_signer
+I0428 08:55:37.118164       1 controllermanager.go:574] Started "tokencleaner"
+I0428 08:55:37.118191       1 tokencleaner.go:118] Starting token cleaner controller
+I0428 08:55:37.118200       1 shared_informer.go:240] Waiting for caches to sync for token_cleaner
+I0428 08:55:37.118204       1 shared_informer.go:247] Caches are synced for token_cleaner 
+I0428 08:55:37.120147       1 node_lifecycle_controller.go:377] Sending events to api server.
+I0428 08:55:37.120470       1 taint_manager.go:163] "Sending events to api server"
+I0428 08:55:37.120613       1 node_lifecycle_controller.go:505] Controller will reconcile labels.
+I0428 08:55:37.120692       1 controllermanager.go:574] Started "nodelifecycle"
+I0428 08:55:37.120754       1 node_lifecycle_controller.go:539] Starting node controller
+I0428 08:55:37.120782       1 shared_informer.go:240] Waiting for caches to sync for taint
+I0428 08:55:37.122674       1 controllermanager.go:574] Started "attachdetach"
+I0428 08:55:37.122807       1 attach_detach_controller.go:327] Starting attach detach controller
+I0428 08:55:37.122830       1 shared_informer.go:240] Waiting for caches to sync for attach detach
+I0428 08:55:37.124731       1 controllermanager.go:574] Started "persistentvolume-expander"
+I0428 08:55:37.124877       1 expand_controller.go:327] Starting expand controller
+I0428 08:55:37.124904       1 shared_informer.go:240] Waiting for caches to sync for expand
+I0428 08:55:37.132071       1 controllermanager.go:574] Started "horizontalpodautoscaling"
+I0428 08:55:37.132201       1 horizontal.go:169] Starting HPA controller
+I0428 08:55:37.132226       1 shared_informer.go:240] Waiting for caches to sync for HPA
+I0428 08:55:37.133932       1 controllermanager.go:574] Started "statefulset"
+I0428 08:55:37.134095       1 stateful_set.go:146] Starting stateful set controller
+I0428 08:55:37.134133       1 shared_informer.go:240] Waiting for caches to sync for stateful set
+I0428 08:55:37.135570       1 controllermanager.go:574] Started "csrcleaner"
+I0428 08:55:37.135612       1 cleaner.go:82] Starting CSR cleaner controller
+E0428 08:55:37.137334       1 core.go:91] Failed to start service controller: WARNING: no cloud provider provided, services of type LoadBalancer will fail
+W0428 08:55:37.137386       1 controllermanager.go:566] Skipping "service"
+I0428 08:55:37.139609       1 controllermanager.go:574] Started "replicationcontroller"
+I0428 08:55:37.139658       1 replica_set.go:182] Starting replicationcontroller controller
+I0428 08:55:37.139669       1 shared_informer.go:240] Waiting for caches to sync for ReplicationController
+I0428 08:55:37.141803       1 controllermanager.go:574] Started "podgc"
+I0428 08:55:37.141999       1 gc_controller.go:89] Starting GC controller
+I0428 08:55:37.142026       1 shared_informer.go:240] Waiting for caches to sync for GC
+I0428 08:55:37.162804       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for endpoints
+I0428 08:55:37.162857       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for daemonsets.apps
+I0428 08:55:37.162926       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for updaterequests.kyverno.io
+I0428 08:55:37.162965       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for endpointslices.discovery.k8s.io
+I0428 08:55:37.162982       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for policyreports.wgpolicyk8s.io
+I0428 08:55:37.163053       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for limitranges
+W0428 08:55:37.163065       1 shared_informer.go:494] resyncPeriod 16h58m10.204066124s is smaller than resyncCheckPeriod 23h11m14.960473206s and the informer has already started. Changing it to 23h11m14.960473206s
+I0428 08:55:37.163147       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for events.events.k8s.io
+I0428 08:55:37.163227       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for ingresses.networking.k8s.io
+I0428 08:55:37.163278       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for replicasets.apps
+I0428 08:55:37.163385       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for rolebindings.rbac.authorization.k8s.io
+I0428 08:55:37.163439       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for csistoragecapacities.storage.k8s.io
+I0428 08:55:37.163485       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for generaterequests.kyverno.io
+I0428 08:55:37.163551       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for statefulsets.apps
+I0428 08:55:37.163592       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for networkpolicies.networking.k8s.io
+I0428 08:55:37.163658       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for poddisruptionbudgets.policy
+I0428 08:55:37.163703       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for ingresses.extensions
+I0428 08:55:37.163716       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for leases.coordination.k8s.io
+I0428 08:55:37.163838       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for deployments.apps
+I0428 08:55:37.163875       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for horizontalpodautoscalers.autoscaling
+I0428 08:55:37.163927       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for roles.rbac.authorization.k8s.io
+I0428 08:55:37.163973       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for cronjobs.batch
+I0428 08:55:37.164046       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for policies.kyverno.io
+I0428 08:55:37.164085       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for podtemplates
+W0428 08:55:37.164162       1 shared_informer.go:494] resyncPeriod 15h49m49.170271686s is smaller than resyncCheckPeriod 23h11m14.960473206s and the informer has already started. Changing it to 23h11m14.960473206s
+I0428 08:55:37.164272       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for serviceaccounts
+I0428 08:55:37.164305       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for controllerrevisions.apps
+I0428 08:55:37.164318       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for jobs.batch
+I0428 08:55:37.164417       1 resource_quota_monitor.go:229] QuotaMonitor created object count evaluator for reportchangerequests.kyverno.io
+I0428 08:55:37.164447       1 controllermanager.go:574] Started "resourcequota"
+I0428 08:55:37.164530       1 resource_quota_controller.go:273] Starting resource quota controller
+I0428 08:55:37.164558       1 shared_informer.go:240] Waiting for caches to sync for resource quota
+I0428 08:55:37.164574       1 resource_quota_monitor.go:304] QuotaMonitor running
+I0428 08:55:37.187846       1 controllermanager.go:574] Started "namespace"
+I0428 08:55:37.187865       1 namespace_controller.go:200] Starting namespace controller
+I0428 08:55:37.187879       1 shared_informer.go:240] Waiting for caches to sync for namespace
+I0428 08:55:37.191600       1 controllermanager.go:574] Started "daemonset"
+I0428 08:55:37.191716       1 daemon_controller.go:285] Starting daemon sets controller
+I0428 08:55:37.191746       1 shared_informer.go:240] Waiting for caches to sync for daemon sets
+I0428 08:55:37.233505       1 controllermanager.go:574] Started "job"
+I0428 08:55:37.233567       1 job_controller.go:150] Starting job controller
+I0428 08:55:37.233575       1 shared_informer.go:240] Waiting for caches to sync for job
+I0428 08:55:37.284025       1 controllermanager.go:574] Started "replicaset"
+I0428 08:55:37.284087       1 replica_set.go:182] Starting replicaset controller
+I0428 08:55:37.284094       1 shared_informer.go:240] Waiting for caches to sync for ReplicaSet
+I0428 08:55:37.333741       1 controllermanager.go:574] Started "pv-protection"
+I0428 08:55:37.333786       1 pv_protection_controller.go:83] Starting PV protection controller
+I0428 08:55:37.333798       1 shared_informer.go:240] Waiting for caches to sync for PV protection
+I0428 08:55:37.383960       1 controllermanager.go:574] Started "persistentvolume-binder"
+I0428 08:55:37.384176       1 pv_controller_base.go:308] Starting persistent volume controller
+I0428 08:55:37.384217       1 shared_informer.go:240] Waiting for caches to sync for persistent volume
+I0428 08:55:37.384958       1 shared_informer.go:240] Waiting for caches to sync for resource quota
+W0428 08:55:37.388538       1 actual_state_of_world.go:534] Failed to update statusUpdateNeeded field in actual state of world: Failed to set statusUpdateNeeded to needed true, because nodeName="test-kyverno-control-plane" does not exist
+I0428 08:55:37.398895       1 shared_informer.go:247] Caches are synced for node 
+I0428 08:55:37.398975       1 range_allocator.go:172] Starting range CIDR allocator
+I0428 08:55:37.398981       1 shared_informer.go:240] Waiting for caches to sync for cidrallocator
+I0428 08:55:37.398985       1 shared_informer.go:247] Caches are synced for cidrallocator 
+I0428 08:55:37.402472       1 shared_informer.go:247] Caches are synced for TTL after finished 
+I0428 08:55:37.404084       1 shared_informer.go:247] Caches are synced for endpoint_slice_mirroring 
+I0428 08:55:37.405872       1 shared_informer.go:247] Caches are synced for certificate-csrapproving 
+I0428 08:55:37.408316       1 shared_informer.go:247] Caches are synced for ClusterRoleAggregator 
+I0428 08:55:37.409901       1 shared_informer.go:247] Caches are synced for PVC protection 
+I0428 08:55:37.412541       1 shared_informer.go:240] Waiting for caches to sync for garbage collector
+I0428 08:55:37.416392       1 shared_informer.go:247] Caches are synced for bootstrap_signer 
+I0428 08:55:37.421009       1 shared_informer.go:247] Caches are synced for taint 
+I0428 08:55:37.421063       1 node_lifecycle_controller.go:1398] Initializing eviction metric for zone: 
+I0428 08:55:37.421074       1 taint_manager.go:187] "Starting NoExecuteTaintManager"
+W0428 08:55:37.421100       1 node_lifecycle_controller.go:1013] Missing timestamp for Node test-kyverno-control-plane. Assuming now as a timestamp.
+I0428 08:55:37.421139       1 node_lifecycle_controller.go:1214] Controller detected that zone  is now in state Normal.
+I0428 08:55:37.421423       1 event.go:291] "Event occurred" object="test-kyverno-control-plane" kind="Node" apiVersion="v1" type="Normal" reason="RegisteredNode" message="Node test-kyverno-control-plane event: Registered Node test-kyverno-control-plane in Controller"
+I0428 08:55:37.425018       1 shared_informer.go:247] Caches are synced for expand 
+I0428 08:55:37.433320       1 shared_informer.go:247] Caches are synced for HPA 
+I0428 08:55:37.434518       1 shared_informer.go:247] Caches are synced for stateful set 
+I0428 08:55:37.434603       1 shared_informer.go:247] Caches are synced for job 
+I0428 08:55:37.434604       1 shared_informer.go:247] Caches are synced for PV protection 
+I0428 08:55:37.442771       1 shared_informer.go:247] Caches are synced for GC 
+I0428 08:55:37.446959       1 shared_informer.go:247] Caches are synced for endpoint_slice 
+I0428 08:55:37.459498       1 shared_informer.go:247] Caches are synced for deployment 
+I0428 08:55:37.461812       1 shared_informer.go:247] Caches are synced for cronjob 
+I0428 08:55:37.465076       1 shared_informer.go:247] Caches are synced for certificate-csrsigning-kube-apiserver-client 
+I0428 08:55:37.465134       1 shared_informer.go:247] Caches are synced for certificate-csrsigning-kubelet-serving 
+I0428 08:55:37.465155       1 shared_informer.go:247] Caches are synced for certificate-csrsigning-kubelet-client 
+I0428 08:55:37.466453       1 shared_informer.go:247] Caches are synced for certificate-csrsigning-legacy-unknown 
+I0428 08:55:37.467626       1 shared_informer.go:247] Caches are synced for TTL 
+I0428 08:55:37.470050       1 shared_informer.go:247] Caches are synced for crt configmap 
+I0428 08:55:37.474497       1 shared_informer.go:247] Caches are synced for ephemeral 
+I0428 08:55:37.476895       1 shared_informer.go:247] Caches are synced for endpoint 
+I0428 08:55:37.479273       1 shared_informer.go:247] Caches are synced for service account 
+I0428 08:55:37.484621       1 shared_informer.go:247] Caches are synced for persistent volume 
+I0428 08:55:37.484777       1 shared_informer.go:247] Caches are synced for ReplicaSet 
+I0428 08:55:37.488961       1 shared_informer.go:247] Caches are synced for namespace 
+I0428 08:55:37.492445       1 shared_informer.go:247] Caches are synced for daemon sets 
+I0428 08:55:37.623554       1 shared_informer.go:247] Caches are synced for attach detach 
+I0428 08:55:37.686528       1 shared_informer.go:247] Caches are synced for resource quota 
+I0428 08:55:37.714644       1 shared_informer.go:247] Caches are synced for disruption 
+I0428 08:55:37.714680       1 disruption.go:371] Sending events to api server.
+I0428 08:55:37.740183       1 shared_informer.go:247] Caches are synced for ReplicationController 
+I0428 08:55:37.764959       1 shared_informer.go:247] Caches are synced for resource quota 
+I0428 08:55:38.157023       1 shared_informer.go:247] Caches are synced for garbage collector 
+I0428 08:55:38.157057       1 garbagecollector.go:151] Garbage collector: all resource monitors have synced. Proceeding to collect garbage
+I0428 08:55:38.213076       1 shared_informer.go:247] Caches are synced for garbage collector 
+E0428 09:36:02.695723       1 tokens_controller.go:262] error synchronizing serviceaccount sonobuoy/default: secrets "default-token-vcqqm" is forbidden: unable to create new content in namespace sonobuoy because it is being terminated
+E0428 09:36:02.701510       1 tokens_controller.go:262] error synchronizing serviceaccount sonobuoy/sonobuoy-serviceaccount: secrets "sonobuoy-serviceaccount-token-v5zbz" is forbidden: unable to create new content in namespace sonobuoy because it is being terminated
+E0428 09:36:29.160083       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:36:29.289892       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:36:29.407563       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:36:29.558452       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:36:29.726910       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:36:29.980554       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:36:30.250898       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:36:30.707083       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:36:31.471661       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:36:32.890404       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:36:35.582808       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+I0428 09:36:45.834955       1 namespace_controller.go:185] Namespace has been deleted sonobuoy
+E0428 09:38:30.236929       1 tokens_controller.go:262] error synchronizing serviceaccount sonobuoy/default: secrets "default-token-qxdbx" is forbidden: unable to create new content in namespace sonobuoy because it is being terminated
+E0428 09:38:30.244754       1 tokens_controller.go:262] error synchronizing serviceaccount sonobuoy/sonobuoy-serviceaccount: secrets "sonobuoy-serviceaccount-token-cmq82" is forbidden: unable to create new content in namespace sonobuoy because it is being terminated
+E0428 09:38:56.690445       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:38:56.812014       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:38:56.930158       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:38:57.052846       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:38:57.206191       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:38:57.395333       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:38:57.681716       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:38:58.112722       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:38:58.863274       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:39:00.284717       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:39:02.976966       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+I0428 09:39:13.223626       1 namespace_controller.go:185] Namespace has been deleted sonobuoy
+E0428 09:40:46.349597       1 tokens_controller.go:262] error synchronizing serviceaccount sonobuoy/default: secrets "default-token-qb8vw" is forbidden: unable to create new content in namespace sonobuoy because it is being terminated
+E0428 09:40:46.351653       1 tokens_controller.go:262] error synchronizing serviceaccount sonobuoy/sonobuoy-serviceaccount: secrets "sonobuoy-serviceaccount-token-h7nzj" is forbidden: unable to create new content in namespace sonobuoy because it is being terminated
+E0428 09:41:12.919622       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:41:13.034411       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:41:13.158158       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:41:13.289413       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:41:13.442731       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:41:13.643858       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:41:13.923610       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:41:14.419029       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:41:15.172976       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:41:16.659016       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+I0428 09:41:24.446731       1 namespace_controller.go:185] Namespace has been deleted sonobuoy
+E0428 09:46:16.532525       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:46:16.642295       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:46:16.757263       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:46:16.890037       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:46:17.040046       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:46:17.328764       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:46:17.603543       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:46:18.049682       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:46:18.818723       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:46:20.225106       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+E0428 09:46:22.885928       1 namespace_controller.go:162] deletion of namespace sonobuoy failed: unexpected items still remain in namespace: sonobuoy for gvr: /v1, Resource=pods
+I0428 09:46:33.148092       1 namespace_controller.go:185] Namespace has been deleted sonobuoy

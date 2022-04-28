@@ -1,0 +1,11 @@
+name: custom-e2e
+status: unknown
+meta:
+  type: summary
+items:
+- name: mtlb.json
+  status: unknown
+  meta:
+    error: invalid character 'a' in literal null (expecting 'u')
+    file: results/global/mtlb.json
+    type: file

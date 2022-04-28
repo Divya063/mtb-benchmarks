@@ -1,0 +1,28 @@
+I0428 07:29:25.648004       1 node.go:172] Successfully retrieved node IP: 172.18.0.6
+I0428 07:29:25.648065       1 server_others.go:140] Detected node IP 172.18.0.6
+I0428 07:29:25.664416       1 server_others.go:206] kube-proxy running in dual-stack mode, IPv4-primary
+I0428 07:29:25.664454       1 server_others.go:212] Using iptables Proxier.
+I0428 07:29:25.664464       1 server_others.go:219] creating dualStackProxier for iptables.
+W0428 07:29:25.664472       1 server_others.go:512] detect-local-mode set to ClusterCIDR, but no IPv6 cluster CIDR defined, , defaulting to no-op detect-local for IPv6
+I0428 07:29:25.665084       1 server.go:643] Version: v1.21.1
+I0428 07:29:25.665753       1 conntrack.go:100] Set sysctl 'net/netfilter/nf_conntrack_tcp_timeout_established' to 86400
+I0428 07:29:25.665843       1 conntrack.go:100] Set sysctl 'net/netfilter/nf_conntrack_tcp_timeout_close_wait' to 3600
+I0428 07:29:25.667781       1 config.go:315] Starting service config controller
+I0428 07:29:25.667812       1 shared_informer.go:240] Waiting for caches to sync for service config
+I0428 07:29:25.668222       1 config.go:224] Starting endpoint slice config controller
+I0428 07:29:25.668351       1 shared_informer.go:240] Waiting for caches to sync for endpoint slice config
+W0428 07:29:25.670799       1 warnings.go:70] discovery.k8s.io/v1beta1 EndpointSlice is deprecated in v1.21+, unavailable in v1.25+; use discovery.k8s.io/v1 EndpointSlice
+W0428 07:29:25.672295       1 warnings.go:70] discovery.k8s.io/v1beta1 EndpointSlice is deprecated in v1.21+, unavailable in v1.25+; use discovery.k8s.io/v1 EndpointSlice
+I0428 07:29:25.768039       1 shared_informer.go:247] Caches are synced for service config 
+I0428 07:29:25.769275       1 shared_informer.go:247] Caches are synced for endpoint slice config 
+W0428 07:37:43.320433       1 warnings.go:70] discovery.k8s.io/v1beta1 EndpointSlice is deprecated in v1.21+, unavailable in v1.25+; use discovery.k8s.io/v1 EndpointSlice
+W0428 08:13:19.068545       1 warnings.go:70] discovery.k8s.io/v1beta1 EndpointSlice is deprecated in v1.21+, unavailable in v1.25+; use discovery.k8s.io/v1 EndpointSlice
+W0428 08:31:54.516429       1 warnings.go:70] discovery.k8s.io/v1beta1 EndpointSlice is deprecated in v1.21+, unavailable in v1.25+; use discovery.k8s.io/v1 EndpointSlice
+W0428 08:54:55.415493       1 warnings.go:70] discovery.k8s.io/v1beta1 EndpointSlice is deprecated in v1.21+, unavailable in v1.25+; use discovery.k8s.io/v1 EndpointSlice
+W0428 09:04:07.735642       1 warnings.go:70] discovery.k8s.io/v1beta1 EndpointSlice is deprecated in v1.21+, unavailable in v1.25+; use discovery.k8s.io/v1 EndpointSlice
+W0428 09:12:58.346626       1 warnings.go:70] discovery.k8s.io/v1beta1 EndpointSlice is deprecated in v1.21+, unavailable in v1.25+; use discovery.k8s.io/v1 EndpointSlice
+W0428 09:19:27.052376       1 warnings.go:70] discovery.k8s.io/v1beta1 EndpointSlice is deprecated in v1.21+, unavailable in v1.25+; use discovery.k8s.io/v1 EndpointSlice
+W0428 09:26:40.743443       1 warnings.go:70] discovery.k8s.io/v1beta1 EndpointSlice is deprecated in v1.21+, unavailable in v1.25+; use discovery.k8s.io/v1 EndpointSlice
+W0428 09:35:10.368584       1 warnings.go:70] discovery.k8s.io/v1beta1 EndpointSlice is deprecated in v1.21+, unavailable in v1.25+; use discovery.k8s.io/v1 EndpointSlice
+W0428 09:40:44.129948       1 warnings.go:70] discovery.k8s.io/v1beta1 EndpointSlice is deprecated in v1.21+, unavailable in v1.25+; use discovery.k8s.io/v1 EndpointSlice
+W0428 09:50:20.736691       1 warnings.go:70] discovery.k8s.io/v1beta1 EndpointSlice is deprecated in v1.21+, unavailable in v1.25+; use discovery.k8s.io/v1 EndpointSlice
