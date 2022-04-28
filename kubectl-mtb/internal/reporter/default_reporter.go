@@ -1,15 +1,15 @@
 package reporter
 
 import (
+	"encoding/json"
 	"fmt"
-	"github.com/olekukonko/tablewriter"
 	"io"
 	"os"
-	"sigs.k8s.io/multi-tenancy/benchmarks/kubectl-mtb/pkg/benchmark"
-	benchmarksuite "sigs.k8s.io/multi-tenancy/benchmarks/kubectl-mtb/pkg/benchmark_suite"
 	"strconv"
 
-	"gopkg.in/yaml.v2"
+	"github.com/olekukonko/tablewriter"
+	"sigs.k8s.io/multi-tenancy/benchmarks/kubectl-mtb/pkg/benchmark"
+	benchmarksuite "sigs.k8s.io/multi-tenancy/benchmarks/kubectl-mtb/pkg/benchmark_suite"
 )
 
 // DefaultReporter collects all the test summaries
@@ -148,7 +148,7 @@ func writeSonobuoyReport(w io.Writer, benchmarks []*benchmark.Benchmark) error {
 	results := createSonobuoyResultsForResult(benchmarks)
 	sonobuoyResults.Items = append(sonobuoyResults.Items, results...)
 	//}
-	j, err := yaml.Marshal(sonobuoyResults)
+	j, err := json.Marshal(sonobuoyResults)
 	if err != nil {
 		return err
 	}

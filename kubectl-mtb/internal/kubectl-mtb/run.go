@@ -23,10 +23,12 @@ import (
 	"time"
 
 	"github.com/spf13/cobra"
+	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
 	"k8s.io/client-go/kubernetes"
 	cmdutil "k8s.io/kubectl/pkg/cmd/util"
+	podutil "k8s.io/kubernetes/test/e2e/framework/pod"
 	"sigs.k8s.io/multi-tenancy/benchmarks/kubectl-mtb/internal/reporter"
 	"sigs.k8s.io/multi-tenancy/benchmarks/kubectl-mtb/pkg/benchmark"
 	"sigs.k8s.io/multi-tenancy/benchmarks/kubectl-mtb/test"
@@ -235,6 +237,30 @@ func shouldSkipTest(b *benchmark.Benchmark, suiteSummary *reporter.SuiteSummary,
 	return false
 }
 
+func WaitForKyvernoToReady(k8sClient *kubernetes.Clientset) error {
+	var err error
+	var podsList *corev1.PodList
+	for {
+		podsList, err = k8sClient.CoreV1().Pods("kyverno").List(context.TODO(), metav1.ListOptions{})
+		if err != nil {
+			return err
+		}
+
+		time.Sleep(1 * time.Second)
+		if len(podsList.Items) > 0 {
+			break
+		}
+	}
+	podNames := []string{podsList.Items[0].ObjectMeta.Name}
+
+	for {
+		if podutil.CheckPodsRunningReady(k8sClient, "kyverno", podNames, 200*time.Second) {
+			break
+		}
+	}
+	return nil
+}
+
 func runTests(cmd *cobra.Command, args []string) error {
 
 	benchmarkRunOptions.Label, _ = cmd.Flags().GetString("labels")
@@ -295,16 +321,32 @@ func runTests(cmd *cobra.Command, args []string) error {
 	suiteSummary.RunTime = suiteElapsedTime
 	suiteSummary.NumberOfSkippedTests = test.BenchmarkSuite.Totals() - len(benchmarks)
 	reportSuiteDidEnd(suiteSummary, reportersArray)
+	kubecfgFlags := genericclioptions.NewConfigFlags(false)
+	config, err := kubecfgFlags.ToRESTConfig()
+	// create the K8s clientset
+	client, err := kubernetes.NewForConfig(config)
+	if err != nil {
+		return err
+	}
+	if err != nil {
+		return err
+	}
+
 	if os.Getenv("AUTO_REMEDIATION") == "true" {
-		cmd := exec.Command("kubectl", "apply", "-f", "/Users/drani/go/src/sigs.k8s.io/mtb-benchmarks/kubectl-mtb/internal/kubectl-mtb/assets/kyverno.yaml")
+		fmt.Println("Installing kyverno")
+		cmd := exec.Command("kubectl", "apply", "-f", "https://raw.githubusercontent.com/kubernetes-sigs/multi-tenancy/master/benchmarks/kubectl-mtb/test/assets/kyverno.yaml")
 		_, err := cmd.Output()
+		fmt.Println(err)
 		if err != nil {
 			return err
 		}
+
+		WaitForKyvernoToReady(client)
+
 		policy := "https://raw.githubusercontent.com/kubernetes-sigs/multi-tenancy/master/benchmarks/kubectl-mtb/test/policies/kyverno/all_policies.yaml"
 		cmd2 := exec.Command("kubectl", "apply", "-f", policy)
-		stdout, err := cmd2.Output()
-		fmt.Println(stdout)
+		fmt.Println("Applying the kyverno policies")
+		_, err = cmd2.Output()
 		if err != nil {
 			return err
 		}
