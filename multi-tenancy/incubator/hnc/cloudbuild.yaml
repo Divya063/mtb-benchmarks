@@ -1,0 +1,94 @@
+steps:
+# Build release container image
+# Pull source and check out correct tag
+- name: gcr.io/cloud-builders/git
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    set -e
+    echo Cloning from https://github.com/$_HNC_REPO_OWNER/multi-tenancy
+    git clone https://github.com/$_HNC_REPO_OWNER/multi-tenancy
+    cd multi-tenancy
+    echo Checking out hnc-$_HNC_IMG_TAG
+    git checkout hnc-$_HNC_IMG_TAG
+# Build the manifests and the kubectl plugin
+- name: golang:1.14
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    set -e
+    cd multi-tenancy/incubator/hnc
+    export HNC_REGISTRY=$_HNC_REGISTRY
+    export HNC_IMG_NAME=$_HNC_IMG_NAME
+    export HNC_IMG_TAG=$_HNC_IMG_TAG
+    export HNC_RELEASE_REPO_OWNER=$_HNC_REPO_OWNER
+    echo "Building HNC manifests and plugin for $$HNC_REGISTRY/$$HNC_IMG_NAME:$$HNC_IMG_TAG"
+    make build
+    make krew-build
+# Upload manifest
+- name: gcr.io/cloud-builders/curl
+  args:
+  - '-X'
+  - 'POST'
+  - '-H'
+  - 'Content-Type: application/x-application'
+  - '--data-binary'
+  - '@multi-tenancy/incubator/hnc/manifests/hnc-manager.yaml'
+  - '-u'
+  - '$_HNC_USER:$_HNC_PERSONAL_ACCESS_TOKEN'
+  - 'https://uploads.github.com/repos/$_HNC_REPO_OWNER/multi-tenancy/releases/$_HNC_RELEASE_ID/assets?name=hnc-manager.yaml'
+# Upload plugin (Linux)
+- name: gcr.io/cloud-builders/curl
+  args:
+  - '-X'
+  - 'POST'
+  - '-H'
+  - 'Content-Type: application/x-application'
+  - '--data-binary'
+  - '@multi-tenancy/incubator/hnc/bin/kubectl/kubectl-hns_linux_amd64'
+  - '-u'
+  - '$_HNC_USER:$_HNC_PERSONAL_ACCESS_TOKEN'
+  - 'https://uploads.github.com/repos/$_HNC_REPO_OWNER/multi-tenancy/releases/$_HNC_RELEASE_ID/assets?name=kubectl-hns_linux_amd64'
+# Upload plugin (Darwin)
+- name: gcr.io/cloud-builders/curl
+  args:
+  - '-X'
+  - 'POST'
+  - '-H'
+  - 'Content-Type: application/x-application'
+  - '--data-binary'
+  - '@multi-tenancy/incubator/hnc/bin/kubectl/kubectl-hns_darwin_amd64'
+  - '-u'
+  - '$_HNC_USER:$_HNC_PERSONAL_ACCESS_TOKEN'
+  - 'https://uploads.github.com/repos/$_HNC_REPO_OWNER/multi-tenancy/releases/$_HNC_RELEASE_ID/assets?name=kubectl-hns_darwin_amd64'
+# Upload plugin (Krew tar file)
+- name: gcr.io/cloud-builders/curl
+  args:
+  - '-X'
+  - 'POST'
+  - '-H'
+  - 'Content-Type: application/x-application'
+  - '--data-binary'
+  - '@multi-tenancy/incubator/hnc/bin/kubectl-hns.tar.gz'
+  - '-u'
+  - '$_HNC_USER:$_HNC_PERSONAL_ACCESS_TOKEN'
+  - 'https://uploads.github.com/repos/$_HNC_REPO_OWNER/multi-tenancy/releases/$_HNC_RELEASE_ID/assets?name=kubectl-hns.tar.gz'
+# Upload plugin (Krew manifest file - to add to the Krew index)
+- name: gcr.io/cloud-builders/curl
+  args:
+  - '-X'
+  - 'POST'
+  - '-H'
+  - 'Content-Type: application/x-application'
+  - '--data-binary'
+  - '@multi-tenancy/incubator/hnc/manifests/krew-kubectl-hns.yaml'
+  - '-u'
+  - '$_HNC_USER:$_HNC_PERSONAL_ACCESS_TOKEN'
+  - 'https://uploads.github.com/repos/$_HNC_REPO_OWNER/multi-tenancy/releases/$_HNC_RELEASE_ID/assets?name=krew-kubectl-hns.yaml'
+# Build Docker image
+- name: gcr.io/cloud-builders/docker
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/$_HNC_IMG_NAME:$_HNC_IMG_TAG', 'multi-tenancy/incubator/hnc']
+
+images: ['gcr.io/$PROJECT_ID/$_HNC_IMG_NAME:$_HNC_IMG_TAG']

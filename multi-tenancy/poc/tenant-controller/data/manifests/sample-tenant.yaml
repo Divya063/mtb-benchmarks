@@ -1,0 +1,11 @@
+---
+apiVersion: tenants.k8s.io/v1alpha1
+kind: Tenant
+metadata:
+  name: tenant-a 
+spec:
+  namespaces:
+      - name: ns-1
+      - name: ns-2
+        template: restricted
+

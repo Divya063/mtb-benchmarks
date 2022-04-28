@@ -1,0 +1,3 @@
+version: "1"
+domain: x-k8s.io
+repo: sigs.k8s.io/multi-tenancy/incubator/virtualcluster
